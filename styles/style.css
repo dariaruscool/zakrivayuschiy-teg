@@ -189,6 +189,11 @@ footer {
   position: relative;
 }
 
+.disk {
+  display: flex;
+  z-index: 2;
+}
+
 /* СОСТОЯНИЕ КНОПОК */
 .card__like-button::before, .card__save-button::before {
   content: '';
@@ -204,8 +209,6 @@ footer {
   transform: scaleX(1);
 }
 
-/* ? вопрос с перекрашиванием дискеты
-не получилось перекрашивание дискеты. Не понимаю, в чем ошибка */
 .card__like-button:hover, .card__save-button:hover {
   cursor: pointer;
   color: var(--background-color);
