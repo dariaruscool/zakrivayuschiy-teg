@@ -16,22 +16,3 @@
     --core-color: #fff;
 }
 
-/* Я понимаю, что здесь должно быть указано 375, но у меня не срабатывает на 375 (как будто равно игнорируется
-не знаю, в чем дело) */
-@media (width <= 376px) {
-    :root {
-        --wdth: 100vw;
-    }  
-
-    .card__save-button {
-      flex-direction: column;
-    }
-  
-    .content-text {
-      padding: 30px 50px 0 27px;
-    }
-  
-    footer {
-      margin-block-start: 58px;
-    }
-  }
