@@ -17,4 +17,239 @@
 .page {
   min-inline-size: 320px;
   min-block-size: 100dvb;
+  font-family: var(--main-font);
+  color: var(--text-color);
+  font-variation-settings: 'wght' var(--font-weight-text);
+  background-color: var(--background-color);
+  background-image: var(--background-image);
+  background-attachment: fixed;
+  background-repeat: repeat;
+  background-size: 4px;
+}
+
+.card-header {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--background-color);
+  border: 2px solid currentColor;
+  margin: 100px auto;
+  text-transform: uppercase;
+  font-family: var(--accent-font);
+  align-items: center;
+}
+
+.theme-menu__list {
+  display: flex;
+  flex-direction: column;
+  width: 84px;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 20px 0;
+  font-size: 14px;
+}
+
+.button {
+  background-color: transparent;
+  border: none;
+}
+
+.theme-menu__button {
+  position: relative;
+  text-transform: uppercase;
+  transition: opacity 0.3s ease;
+}
+
+/* СОСТОЯНИЕ КНОПОК в хэдере */
+.button:hover {
+  cursor: pointer;
+}
+
+.theme-menu__button:hover {
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+.theme-menu__button:disabled {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.button:focus-visible {
+  outline: none;
+}
+
+.theme-menu__button:focus {
+  outline: none;
+  opacity: 0.6;
+}
+/* КОНЕЦ СОСТОЯНИЯ КНОПОК */
+
+/* АНИМАЦИИ в хэдере*/
+.theme-menu__button::after {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 0%;
+  height: 2px;
+  margin-top: -2px;
+  background-color: currentColor;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+  transform-origin: left;
+}
+
+.theme-menu__button:focus-visible::after {
+  width: 100%;
+  transform: scaleX(1);
+}
+
+.theme-menu__button:disabled::before {
+  content: "\25B6";
+  position: absolute;
+  width: 16px;
+  height: 13px;
+  inset: 2px 0 0 -15px;
+  animation: arrow 0.5s infinite ease-in-out reverse;
+}
+/* КОНЕЦ АНИМАЦИИ в хэдере*/
+
+.width-card {
+  width: var(--wdth);
+}
+
+.title {
+  font-size: var(--font-title);
+  font-variation-settings: 'wght' var(--font-weight-title);
+  padding-top: clamp(7.625rem, 6.4712rem + 4.9231vw, 8.625rem);;
+}
+
+.subtitle {
+  font-size: var(--font-subtitle);
+  padding-top: 20px;
+}
+
+/* почему здесь font-size: 18px; не сработывает для h2 */
+.content-card {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--background-color);
+  border: 2px solid currentColor;
+  margin: 0 auto;
+}
+
+.subtitle-card {
+  font-family: var(--main-font);
+  font-size: 18px;
+  font-weight: var(--font-weight-title);
+  line-height: 21.78px;
+  padding: 5px 10px;
+}
+
+.content-picture {
+  border-top: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+}
+
+.content-text {
+  font-family: var(--main-font);
+  font-size: 18px;
+  line-height: 21px;
+  font-weight: var(--font-weight-text);
+  padding: 30px 27px 0 27px;
+}
+
+.card__button {
+  display: flex;
+  justify-content: flex-end;
+  padding: 20px;
+  gap: 4px;
+}
+
+.card__like-button {
+  border: 2px solid currentColor;
+  /* padding: 10.5px 15px; */
+  position: relative;
+  min-width: 130px;
+  transition: color 1s ease;
+}
+
+.button__text {
+  font-family: var(--accent-font);
+  font-size: 14px;
+  font-weight: var(--font-weight-text);
+  line-height: 12.6px;
+  text-align: center;
+  position: relative;
+}
+
+.card__save-button {
+  border: 2px solid currentColor;
+  padding: 15px 18px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  position: relative;
+  margin: 50px auto 100px;
+  transition: color 1s ease;
+  background-color: var(--background-color);
+}
+
+.disk {
+  display: flex;
+  z-index: 2;
+}
+
+/* СОСТОЯНИЕ КНОПОК */
+.card__like-button::before, .card__save-button::before {
+  content: '';
+  position: absolute;
+  background-color: black;
+  inset: 0;
+  transform: scaleX(0);
+  transition: transform 0.5s ease-in-out;
+  transform-origin: left;
+}
+
+.card__like-button:hover::before, .card__save-button:hover::before {
+  transform: scaleX(1);
+}
+
+.card__like-button:hover, .card__save-button:hover {
+  cursor: pointer;
+  color: var(--background-color);
+}
+
+.card__like-button:focus-visible, .card__save-button:focus-visible {
+  box-shadow: 2px 2px currentColor;
+}
+
+.card__icon-button {
+  transition: border 0.3s ease;
+}
+
+.card__icon-button:focus {
+  outline: none;
+}
+
+.card__icon-button:focus-visible {
+  border: 2px solid currentColor;
+  transition: border 0.3s ease;
+}
+/* КОНЕЦ СОСТОЯНИЕ КНОПОК */
+
+/* Я понимаю, что здесь должно быть указано 375, но у меня не срабатывает на 375 (как будто равно игнорируется
+не знаю, в чем дело) */
+@media (width <= 376px) {
+  :root {
+      --wdth: 100vw;
+  }  
+
+  .card__save-button {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .content-text {
+    padding: 27px 55px 0 27px;
+  }
 }

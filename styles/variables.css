@@ -1,1 +1,18 @@
 /* В этом файле будут храниться все значения переменных в исходном состоянии, а так же их изменения в зависимости от ширины устройства */
+:root {
+    --main-font: 'Inter', sans-serif;
+    --accent-font: 'PressStart2P', fantasy;
+    --text-color: #000;
+    --font-weight-text: 400;
+    --font-weight-title: 700;
+    --background-color: #fff;
+    --background-image: url(../svg/pattern-light.svg);
+    --font-title: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);
+    --font-subtitle:clamp(0.875rem, 0.6769rem + 0.8451vw, 1.4375rem);
+    --wdth: clamp(23.4375rem, 16.2852rem + 30.5164vw, 43.75rem);
+    --contour-heart: #000;
+    --sparks-color: #ff0000;
+    --main-body-color: #ff0000;
+    --core-color: #fff;
+}
+
