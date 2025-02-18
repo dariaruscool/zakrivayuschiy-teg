@@ -19,12 +19,11 @@
   min-block-size: 100dvb;
   font-family: var(--main-font);
   color: var(--text-color);
-  font-variation-settings: 'wght' var(--font-weight-text);
+  font-variation-settings: 'wght' var(--font-weight-text), 'wght' var(--font-subtitle);
   background-color: var(--background-color);
-  background-image: var(--background-image);
   background-attachment: fixed;
-  background-repeat: repeat;
-  background-size: 4px;
+  background-image: var(--bcgradient);  
+  background-size: cover;
 }
 
 .card-header {
@@ -120,12 +119,12 @@
 .title {
   font-size: var(--font-title);
   font-variation-settings: 'wght' var(--font-weight-title);
-  padding-top: clamp(7.625rem, 6.4712rem + 4.9231vw, 8.625rem);;
+  padding-top: clamp(7.625rem, 6.4712rem + 4.9231vw, 8.625rem);
+  padding-bottom: 20px;
 }
 
 .subtitle {
   font-size: var(--font-subtitle);
-  padding-top: 20px;
 }
 
 /* почему здесь font-size: 18px; не сработывает для h2 */
@@ -137,17 +136,51 @@
   margin: 0 auto;
 }
 
+.content-card:not(:first-child) {
+  margin-top: 50px;
+}
+
 .subtitle-card {
   font-family: var(--main-font);
   font-size: 18px;
   font-weight: var(--font-weight-title);
   line-height: 21.78px;
-  padding: 5px 10px;
+  padding: 7px 10px;
 }
+
+.card-label {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.label {
+  /* color: azure; */
+  position: absolute;
+  top: 27px;
+  right: 25px;
+  font-family: var(--accent-font);
+  /* text-transform: uppercase; */
+  font-size: 14px;
+  line-height: 14px;
+  opacity: 50%;
+  mix-blend-mode: hard-light;
+  text-shadow: 0 0 1px var(--label-shadow);
+  mix-blend-mode: difference;
+}
+
+@supports((text-stroke: 1px var(--label-shadow)) or (-webkit-text-stroke: 1px var(--label-shadow))) {
+  .label {
+      -webkit-text-stroke: 1px var(--label-shadow);
+      text-stroke: 1px var(--label-shadow);
+      text-shadow: none;
+  }
+} 
 
 .content-picture {
   border-top: 2px solid currentColor;
   border-bottom: 2px solid currentColor;
+  aspect-ratio: 1/1;
 }
 
 .content-text {
@@ -155,22 +188,28 @@
   font-size: 18px;
   line-height: 21px;
   font-weight: var(--font-weight-text);
-  padding: 30px 27px 0 27px;
+  padding: 27px 27px 0 27px;
 }
 
 .card__button {
   display: flex;
   justify-content: flex-end;
-  padding: 20px;
+  padding: 22px;
   gap: 4px;
 }
 
-.card__like-button {
+.button__main {
   border: 2px solid currentColor;
-  /* padding: 10.5px 15px; */
+  display: flex;
   position: relative;
+  background-color: var(--background-color);
+  align-items: center;
+  justify-content: center;
+}
+
+.card__like-button {
   min-width: 130px;
-  transition: color 1s ease;
+  /* transition: color 1s ease; */
 }
 
 .button__text {
@@ -180,46 +219,47 @@
   line-height: 12.6px;
   text-align: center;
   position: relative;
+  color: var(--button-text);
+  mix-blend-mode: difference;
 }
 
 .card__save-button {
-  border: 2px solid currentColor;
   padding: 15px 18px;
   display: flex;
-  align-items: center;
   gap: 5px;
-  position: relative;
   margin: 50px auto 100px;
-  transition: color 1s ease;
-  background-color: var(--background-color);
+  /* transition: color 1s ease; */
 }
 
 .disk {
-  display: flex;
+  width: 21px;
+  height: 21px;
   z-index: 2;
+  color: var(--button-text);
+  mix-blend-mode: difference;
 }
 
 /* СОСТОЯНИЕ КНОПОК */
-.card__like-button::before, .card__save-button::before {
+.button__main::before {
   content: '';
   position: absolute;
-  background-color: black;
+  background-color: var(--text-color);
   inset: 0;
   transform: scaleX(0);
   transition: transform 0.5s ease-in-out;
   transform-origin: left;
 }
 
-.card__like-button:hover::before, .card__save-button:hover::before {
+.button__main:hover::before {
   transform: scaleX(1);
 }
 
-.card__like-button:hover, .card__save-button:hover {
+.button__main:hover {
   cursor: pointer;
-  color: var(--background-color);
+  /* color: var(--background-color); */
 }
 
-.card__like-button:focus-visible, .card__save-button:focus-visible {
+.button__main:focus-visible {
   box-shadow: 2px 2px currentColor;
 }
 
@@ -235,6 +275,7 @@
   border: 2px solid currentColor;
   transition: border 0.3s ease;
 }
+
 /* КОНЕЦ СОСТОЯНИЕ КНОПОК */
 
 /* Я понимаю, что здесь должно быть указано 375, но у меня не срабатывает на 375 (как будто равно игнорируется
@@ -245,11 +286,95 @@
   }  
 
   .card__save-button {
+    display: flex;
     flex-direction: column;
     gap: 15px;
+    
   }
 
-  .content-text {
-    padding: 27px 55px 0 27px;
+    /* НУЖНА ПОМОЩЬ. У меня какие-то проблемы с размером дискеты. Меняю размеры, но по факту сама дискета получается меньше. Не понимаю, в чем причина. Если нужно задать viewBox, то какой? */
+  .disk {
+    width: 28px;
+    height: 28px;
+  }
+
+  .dialog {
+    padding: 30px 42px;
   }
 }
+
+.dialog {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  inset: 0;
+  transition: opacity 0.3s ease-in-out;
+  width: var(--wdth-dialog);
+  padding: 30px;
+  gap: 25px;
+  font-family: var(--accent-font);
+  line-height: 21px;
+  background-color: var(--background-color);
+}
+
+.dialog__text {
+  color: var(--text-color);
+  font-size: 14px;
+  line-height: 21px;
+  text-transform: uppercase;
+}
+
+.dialog:not([open]) {
+  pointer-events: none;
+  opacity: 0;
+}
+
+.dialog::backdrop {
+  background-image: linear-gradient(180deg, #E7E7E7 0%, #1A1A1A 100%);
+}
+
+.card__dialog {
+  display: grid;
+  grid-template-columns: 39px 1fr;
+  align-items: center;
+  gap: 20px;
+  color: var(--text-color);
+}
+
+.dialog-button {
+  padding: 11px;
+}
+
+/* ФИЛЬТРЫ */
+.goddes {
+  filter: sepia(50%);
+}
+
+.women {
+  filter: hue-rotate(180deg);
+}
+
+.relax {
+  filter: brightness(100%) saturate(60%) hue-rotate(60deg);
+}
+
+.pp {
+  filter: sepia(90%);
+}
+
+.logo {
+  filter: invert(1);
+}
+
+.dream {
+  filter: contrast(200%);
+}
+
+.smile {
+  filter: blur(0.7rem);
+}
+
+.men {
+  filter: grayscale(80%);
+}
+
