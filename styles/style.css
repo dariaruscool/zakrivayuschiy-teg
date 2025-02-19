@@ -198,7 +198,7 @@
 }
 
 .button__main {
-  border: 2px solid currentColor;
+  border: 2px solid var(--text-color);
   display: flex;
   position: relative;
   background-color: var(--background-color);

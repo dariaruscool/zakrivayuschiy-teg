@@ -266,22 +266,22 @@
         </svg>
         <span class="button__text">Сохранить на память</span>
       </button>
+      <dialog class="dialog" id="dialog-id">
+        <div class="card__dialog">
+          <svg viewBox="0 0 29 28">
+            <use href="./svg/floppy.svg#floppy"></use>
+          </svg>
+          <p class="dialog__text">Вставьте дискету, чтобы продолжить</p>
+        </div>
+          <button 
+            class="button button__main dialog-button" 
+            type="button"
+            onclick="window['dialog-id'].close()">
+           <span class="button__text">OK</span>
+          </button>
+      </dialog>
     </main>
     <script src="./scripts/set-theme.js"></script>
     <script src="./scripts/like.js"></script>
-    <dialog class="dialog" id="dialog-id">
-      <div class="card__dialog">
-        <svg viewBox="0 0 29 28">
-          <use href="./svg/floppy.svg#floppy"></use>
-        </svg>
-        <p class="dialog__text">Вставьте дискету, чтобы продолжить</p>
-      </div>
-        <button 
-        class="button button__main dialog-button" 
-        type="button"
-        onclick="window['dialog-id'].close()">
-         <span class="button__text">OK</span>
-        </button>
-    </dialog>
   </body>
 </html>
