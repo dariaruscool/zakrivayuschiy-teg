@@ -22,7 +22,7 @@
   font-variation-settings: 'wght' var(--font-weight-text), 'wght' var(--font-subtitle);
   background-color: var(--background-color);
   background-attachment: fixed;
-  background-image: var(--bcgradient);  
+  background-image: var(--bcgradient);
   background-size: cover;
 }
 
