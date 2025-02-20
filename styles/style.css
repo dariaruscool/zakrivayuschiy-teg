@@ -19,7 +19,7 @@
   min-block-size: 100dvb;
   font-family: var(--main-font);
   color: var(--text-color);
-  font-variation-settings: 'wght' var(--font-weight-text), 'wght' var(--font-subtitle);
+  font-variation-settings: 'wght' var(--font-weight-text);
   background-color: var(--background-color);
   background-attachment: fixed;
   background-image: var(--bcgradient);
@@ -56,6 +56,7 @@
   position: relative;
   text-transform: uppercase;
   transition: opacity 0.3s ease;
+  padding: 0;
 }
 
 /* СОСТОЯНИЕ КНОПОК в хэдере */
@@ -107,8 +108,8 @@
   position: absolute;
   width: 16px;
   height: 13px;
-  inset: 2px 0 0 -15px;
-  animation: arrow 0.5s infinite ease-in-out reverse;
+  inset: 2px 0 0 -17px;
+  animation: arrow 1s infinite ease-in-out reverse;
 }
 /* КОНЕЦ АНИМАЦИИ в хэдере*/
 
@@ -125,6 +126,7 @@
 
 .subtitle {
   font-size: var(--font-subtitle);
+  font-variation-settings: 'wght' var(--font-weight-title);
 }
 
 /* почему здесь font-size: 18px; не сработывает для h2 */
@@ -143,9 +145,9 @@
 .subtitle-card {
   font-family: var(--main-font);
   font-size: 18px;
-  font-weight: var(--font-weight-title);
   line-height: 21.78px;
   padding: 7px 10px;
+  font-variation-settings: 'wght' var(--font-weight-title);
 }
 
 .card-label {
@@ -155,7 +157,6 @@
 }
 
 .label {
-  /* color: azure; */
   position: absolute;
   top: 27px;
   right: 25px;
@@ -165,7 +166,8 @@
   line-height: 14px;
   opacity: 50%;
   text-shadow: 0 0 1px var(--label-shadow);
-  mix-blend-mode: difference;
+  color: var(--text-color);
+  mix-blend-mode: hard-light;
 }
 
 @supports((text-stroke: 1px var(--label-shadow)) or (-webkit-text-stroke: 1px var(--label-shadow))) {
@@ -204,6 +206,7 @@
   background-color: var(--background-color);
   align-items: center;
   justify-content: center;
+  color: var(--button-text);
 }
 
 .card__like-button {
@@ -218,23 +221,20 @@
   line-height: 12.6px;
   text-align: center;
   position: relative;
-  color: var(--button-text);
+  /* color: var(--button-text); */
   mix-blend-mode: difference;
 }
 
 .card__save-button {
-  padding: 15px 18px;
-  display: flex;
-  gap: 5px;
+  padding: 15px 20px;
+  gap: 8px;
   margin: 50px auto 100px;
   /* transition: color 1s ease; */
 }
 
 .disk {
-  width: 21px;
-  height: 21px;
-  z-index: 2;
-  color: var(--button-text);
+  inline-size: 21px;
+  aspect-ratio: 1/1;
   mix-blend-mode: difference;
 }
 
@@ -260,6 +260,7 @@
 
 .button__main:focus-visible {
   box-shadow: 2px 2px currentColor;
+  transition: box-shadow 0.3s ease;
 }
 
 .card__icon-button {
@@ -285,16 +286,11 @@
   }  
 
   .card__save-button {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    
+    flex-direction: column; 
   }
 
-    /* НУЖНА ПОМОЩЬ. У меня какие-то проблемы с размером дискеты. Меняю размеры, но по факту сама дискета получается меньше. Не понимаю, в чем причина. Если нужно задать viewBox, то какой? */
   .disk {
-    width: 28px;
-    height: 28px;
+    inline-size: 30px;
   }
 
   .dialog {
@@ -329,7 +325,7 @@
 }
 
 .dialog::backdrop {
-  background-image: linear-gradient(180deg, #E7E7E7 0%, #1A1A1A 100%);
+  background-color: rgba(0 0 0/0.75);
 }
 
 .card__dialog {
@@ -345,35 +341,35 @@
 }
 
 /* ФИЛЬТРЫ */
-.goddes {
+.sepia_50 {
   filter: sepia(50%);
 }
 
-.women {
+.hue-rotate_180 {
   filter: hue-rotate(180deg);
 }
 
-.relax {
+.brg-sat-rotate {
   filter: brightness(100%) saturate(60%) hue-rotate(60deg);
 }
 
-.pp {
-  filter: sepia(90%);
+.opacity {
+  filter: opacity(50%);
 }
 
-.logo {
+.invert {
   filter: invert(1);
 }
 
-.dream {
+.contrast {
   filter: contrast(200%);
 }
 
-.smile {
+.blur {
   filter: blur(0.7rem);
 }
 
-.men {
+.grayscale {
   filter: grayscale(80%);
 }
 

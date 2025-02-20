@@ -77,7 +77,7 @@
     transition: fill 0.1s linear;
   }
   
-  .like-icon.is-liked .heart {
+  /* .like-icon.is-liked .heart {
     animation: heart-scale 0.1s 0.3s ease-in reverse;
   }
   
@@ -88,7 +88,7 @@
     100% {
       scale: 1;
     }
-  }
+  } */
   
   .like-icon.is-liked .sparks {
     animation: sparks-visible 0.3s 0.1s ease-in reverse;
